@@ -1,10 +1,5 @@
-package com.maxhome.com.entities;
+package src.main.java.com.maxhome.com.entities;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Position {
 
     private int x;
@@ -13,5 +8,25 @@ public class Position {
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int newX) {
+        x = newX;
+    }
+
+    public void setY(int newY) {
+        y = newY;
+    }
+
+    public String toString() {
+        return this.x + "-" + this.y;
     }
 }

@@ -1,15 +1,19 @@
-package com.maxhome.com.enums;
+package src.main.java.com.maxhome.com.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public enum Direction {
 
     L("Left"),
     R("Right"),
-    M("Forward");
+    M("Forward"),
+    B("Back");
+
+    Direction(String movement) {
+        this.movement = movement;
+    }
 
     private String movement;
+
+    public String getMovement() {
+        return movement;
+    }
 }

@@ -1,8 +1,8 @@
-package com.maxhome.com.entities;
+package src.main.java.com.maxhome.com.entities;
 
-import com.maxhome.com.enums.CompassDirection;
-import com.maxhome.com.enums.Direction;
-import com.maxhome.com.enums.ExplorerType;
+import src.main.java.com.maxhome.com.enums.CompassDirection;
+import src.main.java.com.maxhome.com.enums.Direction;
+import src.main.java.com.maxhome.com.enums.ExplorerType;
 
 public abstract class Explorer {
 
@@ -10,12 +10,14 @@ public abstract class Explorer {
     protected ExplorerType type;
     protected Position position;
     protected CompassDirection compassDirection;
+    protected int fuelQuantity;
 
-    public Explorer(String name, ExplorerType type, int x, int y, CompassDirection compassDirection) {
+    public Explorer(String name, ExplorerType type, int x, int y, CompassDirection compassDirection, int fuelQuantity) {
         this.name = name;
         this.type = type;
         this.position = new Position(x, y);
         this.compassDirection = compassDirection;
+        this.fuelQuantity = fuelQuantity;
     }
 
     public ExplorerType getType() {
@@ -26,6 +28,10 @@ public abstract class Explorer {
         return position;
     }
 
+    public CompassDirection getCompassDirection() {
+        return compassDirection;
+    }
+
     public abstract Explorer changeDirection(Explorer explorer, Direction direction);
-    public abstract Position nextPosition(Explorer explorer);
+    public abstract Position nextPosition(Explorer explorer, int adjustment);
 }

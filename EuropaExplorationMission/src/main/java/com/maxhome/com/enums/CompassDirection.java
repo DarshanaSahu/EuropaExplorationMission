@@ -1,16 +1,15 @@
-package com.maxhome.com.enums;
+package src.main.java.com.maxhome.com.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public enum CompassDirection {
 
     N("North"),
     S("South"),
     E("East"),
     W("West");
+
+    CompassDirection(String name) {
+        this.name = name;
+    }
 
     public CompassDirection left() {
         switch (this) {

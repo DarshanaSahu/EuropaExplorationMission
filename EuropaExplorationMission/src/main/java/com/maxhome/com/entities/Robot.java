@@ -1,21 +1,18 @@
-package com.maxhome.com.entities;
+package src.main.java.com.maxhome.com.entities;
 
-import com.maxhome.com.enums.CompassDirection;
-import com.maxhome.com.enums.Direction;
-import com.maxhome.com.enums.ExplorerType;
-import lombok.Getter;
-import lombok.Setter;
+import src.main.java.com.maxhome.com.enums.CompassDirection;
+import src.main.java.com.maxhome.com.enums.Direction;
+import src.main.java.com.maxhome.com.enums.ExplorerType;
 
-@Setter
-@Getter
 public class Robot extends Explorer {
 
     private String name;
     private Position position;
     private CompassDirection compassDirection;
 
-    public Robot(String name, int x, int y, CompassDirection compassDirection) {
-        super(name, ExplorerType.ROBOT, x, y, compassDirection);
+    public Robot(String name, int x, int y, CompassDirection compassDirection, int fuelQuantity) {
+        super(name, ExplorerType.ROBOT, x, y, compassDirection, fuelQuantity);
+
     }
 
     // Change explorer direction based on instruction provided
@@ -29,19 +26,19 @@ public class Robot extends Explorer {
     }
 
     // Based on current explorer position get next position with the latest compass direction
-    public Position nextPosition(Explorer robot) {
+    public Position nextPosition(Explorer robot, int adjust) {
         switch (robot.compassDirection) {
             case N -> {
-                Position position = new Position(robot.position.getX(), robot.position.getY() + 1);
+                Position position = new Position(robot.position.getX(), robot.position.getY() + (1 * adjust));
                 return position;
             } case E -> {
-                Position position = new Position(robot.position.getX() + 1, robot.position.getY());
+                Position position = new Position(robot.position.getX() + (1 * adjust), robot.position.getY());
                 return position;
             } case S -> {
-                Position position = new Position(robot.position.getX(), robot.position.getY() - 1);
+                Position position = new Position(robot.position.getX(), robot.position.getY() - (1 * adjust));
                 return position;
             } case W -> {
-                Position position = new Position(robot.position.getX() - 1, robot.position.getY());
+                Position position = new Position(robot.position.getX() - (1 * adjust), robot.position.getY());
                 return position;
             }
             default -> {
